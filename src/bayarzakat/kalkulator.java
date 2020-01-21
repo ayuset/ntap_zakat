@@ -471,8 +471,9 @@ public class kalkulator extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void hitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitungActionPerformed
-        // TODO add your handling code here:
-        
+            // TODO add your handling code here:
+        int getv1 = Integer.parseInt(tab.getText());
+        int getv2 = Integer.parseInt(logam.getText());
     }//GEN-LAST:event_hitungActionPerformed
 
     private void kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliActionPerformed
