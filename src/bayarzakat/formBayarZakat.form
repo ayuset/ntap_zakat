@@ -28,7 +28,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pembayaran" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="data" min="-2" pref="160" max="-2" attributes="0"/>
                           <Component id="kal" min="-2" pref="160" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -49,7 +49,7 @@
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Component id="kal" min="-2" pref="44" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-              <Component id="pembayaran" min="-2" pref="44" max="-2" attributes="0"/>
+              <Component id="data" min="-2" pref="44" max="-2" attributes="0"/>
               <EmptySpace pref="37" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -64,12 +64,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kalActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="pembayaran">
+    <Component class="javax.swing.JButton" name="data">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="text" type="java.lang.String" value="Detail Data"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pembayaranActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dataActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
