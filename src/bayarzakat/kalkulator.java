@@ -6,19 +6,45 @@
 
 package bayarzakat;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  *
  * @author USER
  */
 public class kalkulator extends javax.swing.JFrame {
-
+    double hJumlahHarta = 0;
+    double hBersih = 0;
+    public static Connection con;
+    public static Statement stm;
+    double verifikasi;
     /**
      * Creates new form kalkulator
      */
     public kalkulator() {
         initComponents();
+        emas();
     }
-
+    
+    private void emas() {
+        try {
+            String select = "SELECT * FROM master_perhitungan";
+            java.sql.Connection conn=(Connection)Config.configDB();
+            java.sql.Statement stm=conn.createStatement();
+            java.sql.ResultSet rs=stm.executeQuery(select);
+    //        ResultSet rs = stm.executeQuery(select);
+            while(rs.next()){
+                double harga = rs.getDouble("harga");
+//                System.out.println(harga);
+                kEmas.setText(String.valueOf(harga));
+            }
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,27 +64,23 @@ public class kalkulator extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         tab = new javax.swing.JTextField();
         logam = new javax.swing.JTextField();
         surat = new javax.swing.JTextField();
         properti = new javax.swing.JTextField();
         kendaraan = new javax.swing.JTextField();
         koleksi = new javax.swing.JTextField();
-        dagang = new javax.swing.JTextField();
+        stok = new javax.swing.JTextField();
         lain = new javax.swing.JTextField();
         piutang = new javax.swing.JTextField();
-        jumlah = new javax.swing.JTextField();
         tempo = new javax.swing.JTextField();
-        penghasilan = new javax.swing.JTextField();
         hitung = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         kEmas = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        Kbersih = new javax.swing.JLabel();
+        kBersih = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -76,14 +98,16 @@ public class kalkulator extends javax.swing.JFrame {
         kProperti = new javax.swing.JLabel();
         kKendaraan = new javax.swing.JLabel();
         kKoleksi = new javax.swing.JLabel();
-        kDagang = new javax.swing.JLabel();
+        kStok = new javax.swing.JLabel();
         kLain = new javax.swing.JLabel();
         kPiutang = new javax.swing.JLabel();
         kHarta = new javax.swing.JLabel();
         kTempo = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        kJumlah = new javax.swing.JLabel();
+        zPerbulan = new javax.swing.JLabel();
         bayar = new javax.swing.JButton();
+        jLabel41 = new javax.swing.JLabel();
+        zPertahun = new javax.swing.JLabel();
         kembali = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,13 +122,13 @@ public class kalkulator extends javax.swing.JFrame {
         jLabel3.setText("Harta Logam");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Harta surat");
+        jLabel4.setText("Harta Surat");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setText("Harta properti");
+        jLabel5.setText("Harta Properti");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setText("Harta kendaraan");
+        jLabel6.setText("Harta Kendaraan");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Harta Koleksi");
@@ -116,16 +140,10 @@ public class kalkulator extends javax.swing.JFrame {
         jLabel9.setText("Harta Lainnya");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel10.setText("Harta piutang lancar");
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel12.setText("Jumlah Harta");
+        jLabel10.setText("Harta Piutang Lancar");
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel13.setText("Harta jatuh tempo");
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel14.setText("Penghasilan bersih");
+        jLabel13.setText("Hutang Jatuh Tempo");
 
         hitung.setText("Hitung");
         hitung.addActionListener(new java.awt.event.ActionListener() {
@@ -145,14 +163,14 @@ public class kalkulator extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel16.setText("Penghasilan Bersih");
 
-        Kbersih.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Kbersih.setText("0");
+        kBersih.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        kBersih.setText("0");
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel26.setText("Harta jatuh tempo");
+        jLabel26.setText("Harta Jatuh Tempo");
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel18.setText("Harta surat");
+        jLabel18.setText("Harta Surat");
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel22.setText("Harta Stock dagang");
@@ -164,19 +182,19 @@ public class kalkulator extends javax.swing.JFrame {
         jLabel23.setText("Harta Lainnya");
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel19.setText("Harta properti");
+        jLabel19.setText("Harta Properti");
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel21.setText("Harta Koleksi");
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel20.setText("Harta kendaraan");
+        jLabel20.setText("Harta Kendaraan");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("Harta Tabungan");
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel24.setText("Harta piutang lancar");
+        jLabel24.setText("Harta Piutang Lancar");
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel25.setText("Jumlah Harta");
@@ -199,8 +217,8 @@ public class kalkulator extends javax.swing.JFrame {
         kKoleksi.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         kKoleksi.setText("0");
 
-        kDagang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        kDagang.setText("0");
+        kStok.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        kStok.setText("0");
 
         kLain.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         kLain.setText("0");
@@ -214,11 +232,11 @@ public class kalkulator extends javax.swing.JFrame {
         kTempo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         kTempo.setText("0");
 
-        jLabel40.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel40.setText("Jumlah Perbulan");
+        jLabel40.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel40.setText("Jumlah Zakat yang harus dibayar Perbulan :");
 
-        kJumlah.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        kJumlah.setText("0");
+        zPerbulan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        zPerbulan.setText("0");
 
         bayar.setText("Bayar");
         bayar.addActionListener(new java.awt.event.ActionListener() {
@@ -226,6 +244,12 @@ public class kalkulator extends javax.swing.JFrame {
                 bayarActionPerformed(evt);
             }
         });
+
+        jLabel41.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel41.setText("Jumlah Zakat yang harus dibayar Pertahun :");
+
+        zPertahun.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        zPertahun.setText("0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -237,7 +261,7 @@ public class kalkulator extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel40)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(kJumlah))
+                        .addComponent(zPerbulan))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
@@ -251,43 +275,45 @@ public class kalkulator extends javax.swing.JFrame {
                             .addComponent(jLabel23)
                             .addComponent(jLabel24)
                             .addComponent(jLabel25)
-                            .addComponent(jLabel26))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel15))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(kTabungan, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Kbersih)
+                                .addComponent(kBersih)
                                 .addComponent(kEmas))
                             .addComponent(kLogam, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(kSurat, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(kProperti, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(kKendaraan, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(kKoleksi, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(kDagang, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(kStok, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(kLain, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(kPiutang, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(kHarta, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(kTempo, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(kTempo, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel41)
+                        .addGap(74, 74, 74)
+                        .addComponent(zPertahun)))
                 .addGap(56, 56, 56))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(143, 143, 143))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(43, 43, 43)
-                    .addComponent(jLabel15)
-                    .addContainerGap(282, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(kEmas)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(kEmas)
+                    .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(Kbersih))
+                    .addComponent(kBersih))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -314,7 +340,7 @@ public class kalkulator extends javax.swing.JFrame {
                     .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kDagang)
+                    .addComponent(kStok)
                     .addComponent(jLabel22))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -335,15 +361,14 @@ public class kalkulator extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel40)
-                    .addComponent(kJumlah))
+                    .addComponent(zPerbulan))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(zPertahun)
+                    .addComponent(jLabel41))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(37, 37, 37)
-                    .addComponent(jLabel15)
-                    .addContainerGap(458, Short.MAX_VALUE)))
+                .addGap(26, 26, 26))
         );
 
         kembali.setText("Kembali");
@@ -359,46 +384,40 @@ public class kalkulator extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel14))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel13))
                         .addGap(133, 133, 133)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tempo, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tempo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(piutang, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lain, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dagang, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stok, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(koleksi, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(kendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(properti, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(surat, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(logam, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(penghasilan, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(hitung, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(hitung, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(308, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(271, 271, 271))
         );
@@ -436,35 +455,26 @@ public class kalkulator extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(dagang))
+                            .addComponent(stok))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(lain))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(piutang))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(jumlah))
-                        .addGap(18, 18, 18)
+                            .addComponent(tempo)
+                            .addComponent(jLabel13))
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(tempo))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(penghasilan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(hitung, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hitung, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(74, 74, 74))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
         );
 
         pack();
@@ -472,8 +482,45 @@ public class kalkulator extends javax.swing.JFrame {
 
     private void hitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitungActionPerformed
             // TODO add your handling code here:
-        int getv1 = Integer.parseInt(tab.getText());
-        int getv2 = Integer.parseInt(logam.getText());
+        double getTab = Integer.parseInt(tab.getText());
+        double getLogam = Integer.parseInt(logam.getText());
+        double getSurat = Integer.parseInt(surat.getText());
+        double getProp = Integer.parseInt(properti.getText());
+        double getKendara = Integer.parseInt(kendaraan.getText());
+        double getKoleksi = Integer.parseInt(koleksi.getText());
+        double getStok = Integer.parseInt(stok.getText());
+        double getLainya = Integer.parseInt(lain.getText());
+        double getPiutang = Integer.parseInt(piutang.getText());
+        double getTempo = Integer.parseInt(tempo.getText());
+        emas();        
+        hJumlahHarta = getTab + getLogam + getSurat + getProp + getKendara + getKoleksi + getStok + getLainya + getPiutang;
+        hBersih = hJumlahHarta - getTempo;
+        String jml_harta = String.valueOf(hJumlahHarta);
+        String jml_bersih = String.valueOf(hBersih);
+        kBersih.setText(jml_bersih);
+        kTabungan.setText(String.valueOf(getTab));
+        kLogam.setText(String.valueOf(getLogam));
+        kSurat.setText(String.valueOf(getSurat));
+        kProperti.setText(String.valueOf(getProp));
+        kKendaraan.setText(String.valueOf(getKendara));
+        kKoleksi.setText(String.valueOf(getKoleksi));
+        kStok.setText(String.valueOf(getStok));
+        kLain.setText(String.valueOf(getLainya));
+        kPiutang.setText(String.valueOf(getPiutang));
+        kHarta.setText(jml_harta);
+        kTempo.setText(String.valueOf(getTempo));
+        
+        double hasilMaal [] = new double[4];
+        double nMaal = 85 * Double.valueOf(kEmas.getText());//nisab = 85 gram * harga_emas
+        double zakatBulan = 0.025 * hBersih;
+        double zakatTahun = zakatBulan * 12;
+        if (hBersih > nMaal) {
+            verifikasi = 1;
+        } else {
+            verifikasi = 0;
+        }
+        zPerbulan.setText(String.valueOf(zakatBulan));
+        zPertahun.setText(String.valueOf(zakatTahun));
     }//GEN-LAST:event_hitungActionPerformed
 
     private void kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliActionPerformed
@@ -524,16 +571,12 @@ public class kalkulator extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Kbersih;
     private javax.swing.JButton bayar;
-    private javax.swing.JTextField dagang;
     private javax.swing.JButton hitung;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -550,23 +593,23 @@ public class kalkulator extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jumlah;
-    private javax.swing.JLabel kDagang;
+    private javax.swing.JLabel kBersih;
     private javax.swing.JLabel kEmas;
     private javax.swing.JLabel kHarta;
-    private javax.swing.JLabel kJumlah;
     private javax.swing.JLabel kKendaraan;
     private javax.swing.JLabel kKoleksi;
     private javax.swing.JLabel kLain;
     private javax.swing.JLabel kLogam;
     private javax.swing.JLabel kPiutang;
     private javax.swing.JLabel kProperti;
+    private javax.swing.JLabel kStok;
     private javax.swing.JLabel kSurat;
     private javax.swing.JLabel kTabungan;
     private javax.swing.JLabel kTempo;
@@ -575,11 +618,13 @@ public class kalkulator extends javax.swing.JFrame {
     private javax.swing.JTextField koleksi;
     private javax.swing.JTextField lain;
     private javax.swing.JTextField logam;
-    private javax.swing.JTextField penghasilan;
     private javax.swing.JTextField piutang;
     private javax.swing.JTextField properti;
+    private javax.swing.JTextField stok;
     private javax.swing.JTextField surat;
     private javax.swing.JTextField tab;
     private javax.swing.JTextField tempo;
+    private javax.swing.JLabel zPerbulan;
+    private javax.swing.JLabel zPertahun;
     // End of variables declaration//GEN-END:variables
 }

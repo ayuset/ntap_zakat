@@ -304,7 +304,7 @@ class JenisZakat{
 	{
 		double hasilMaal [] = new double[4];
 		double verifikasi;
-		double nMaal = 85 * hEmas;
+		double nMaal = 85 * hEmas;//nisab = 85 gram * harga_emas
 		double zakatBulan = 0.025 * hHartaBersih;
 		double zakatTahun = zakatBulan * 12;
 		if (hHartaBersih > nMaal) {
