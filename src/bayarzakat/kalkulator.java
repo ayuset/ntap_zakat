@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,7 +32,7 @@ public class kalkulator extends javax.swing.JFrame {
     
     private void emas() {
         try {
-            String select = "SELECT * FROM master_perhitungan";
+            String select = "SELECT * FROM master_perhitungan WHERE id = 1";
             java.sql.Connection conn=(Connection)Config.configDB();
             java.sql.Statement stm=conn.createStatement();
             java.sql.ResultSet rs=stm.executeQuery(select);
@@ -366,7 +367,7 @@ public class kalkulator extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(zPertahun)
                     .addComponent(jLabel41))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -472,9 +473,10 @@ public class kalkulator extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(hitung, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(74, 74, 74))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(37, 37, 37))
+                        .addGap(117, 117, 117))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -510,7 +512,6 @@ public class kalkulator extends javax.swing.JFrame {
         kHarta.setText(jml_harta);
         kTempo.setText(String.valueOf(getTempo));
         
-        double hasilMaal [] = new double[4];
         double nMaal = 85 * Double.valueOf(kEmas.getText());//nisab = 85 gram * harga_emas
         double zakatBulan = 0.025 * hBersih;
         double zakatTahun = zakatBulan * 12;
@@ -530,9 +531,34 @@ public class kalkulator extends javax.swing.JFrame {
     }//GEN-LAST:event_kembaliActionPerformed
 
     private void bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bayarActionPerformed
-        // TODO add your handling code here:
-        new muzaki().setVisible(true);
-        dispose();
+        // TODO add your handling code here:        
+        if (verifikasi == 1) {
+            try {
+                String sql = "INSERT INTO zakat_harta (harta_tab, harta_logam, harta_surat, harta_properti, harta_kendaraan, harta_koleksi, harta_stock_dagang, harta_lainnya, harta_piutang_lancar, jumlah_harta, harta_jatuh_tempo, penghasilan_bersih) VALUES ('"
+                        +tab.getText()+"','"
+                        +logam.getText()+"','"
+                        +surat.getText()+"','"
+                        +properti.getText()+"','"
+                        +kendaraan.getText()+"','"
+                        +koleksi.getText()+"','"
+                        +stok.getText()+"','"
+                        +lain.getText()+"','"
+                        +piutang.getText()+"','"
+                        +hJumlahHarta+"','"
+                        +tempo.getText()+"','"
+                        +hBersih+"')";
+                java.sql.Connection conn=(Connection)Config.configDB();
+                java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Penyimpanan Data Berhasil");
+                new muzaki().setVisible(true);
+                dispose();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            } 
+        } else {
+            JOptionPane.showMessageDialog(null, "Anda tidak perlu membayar Zakat Harta");
+        }
     }//GEN-LAST:event_bayarActionPerformed
 
     /**
