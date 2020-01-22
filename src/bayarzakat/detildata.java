@@ -6,19 +6,51 @@
 
 package bayarzakat;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author USER
  */
+
+
+
 public class detildata extends javax.swing.JFrame {
 
+    public static Connection conn = null;
+    public static Statement stmt = null;
+    public static final String USER = "root";
+    public static final String PASS = "";
     /**
      * Creates new form detildata
      */
     public detildata() {
-        initComponents();
+         initComponents();
+         tampil();
     }
+    
+    public void tampil() {
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/dompet_zakat", USER, PASS);
+            stmt = conn.createStatement();
 
+            DefaultTableModel tm = (DefaultTableModel) detilmuzaki.getModel();
+            tm.setRowCount(0);
+            ResultSet result = null;
+            result = stmt.executeQuery("SELECT `nama_muzaki`,`no_telepon`,`alamat`,`email`, `harta_tab` FROM `muzaki` INNER JOIN `transaksi_zakat` ON (`muzaki`.id = `transaksi_zakat`.id_muzaki) INNER JOIN `zakat_harta` ON (`transaksi_zakat`.id_zakat = `zakat_harta`.id)");
+            while (result.next()) {
+                Object o[] = {result.getString("nama_muzaki"), result.getString("no_telepon"), result.getString("alamat"),result.getString("email")};
+                tm.addRow(o);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "error gan");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,7 +61,7 @@ public class detildata extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        detilmuzaki = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         dEmas = new javax.swing.JLabel();
@@ -61,10 +93,11 @@ public class detildata extends javax.swing.JFrame {
         jLabel40 = new javax.swing.JLabel();
         dJumlah = new javax.swing.JLabel();
         kembali = new javax.swing.JButton();
+        refresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        detilmuzaki.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -75,7 +108,7 @@ public class detildata extends javax.swing.JFrame {
                 "NAMA", "NO TELP", "ALAMAT", "EMAIL"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(detilmuzaki);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("DETAIL DATA MUZAKI");
@@ -290,13 +323,25 @@ public class detildata extends javax.swing.JFrame {
             }
         });
 
+        refresh.setText("Refresh");
+        refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -317,22 +362,29 @@ public class detildata extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+     
     private void kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliActionPerformed
         // TODO add your handling code here:
         new formBayarZakat().setVisible(true);
         dispose();
     }//GEN-LAST:event_kembaliActionPerformed
+
+    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -384,6 +436,7 @@ public class detildata extends javax.swing.JFrame {
     private javax.swing.JLabel dSurat;
     private javax.swing.JLabel dTabungan;
     private javax.swing.JLabel dTempo;
+    private javax.swing.JTable detilmuzaki;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel15;
@@ -401,7 +454,7 @@ public class detildata extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton kembali;
+    private javax.swing.JButton refresh;
     // End of variables declaration//GEN-END:variables
 }
