@@ -42,13 +42,13 @@ public class detildata extends javax.swing.JFrame {
             DefaultTableModel tm = (DefaultTableModel) detilmuzaki.getModel();
             tm.setRowCount(0);
             ResultSet result = null;
-            result = stmt.executeQuery("SELECT `nama_muzaki`,`no_telepon`,`alamat`,`email`, `harta_tab` FROM `muzaki` INNER JOIN `transaksi_zakat` ON (`muzaki`.id = `transaksi_zakat`.id_muzaki) INNER JOIN `zakat_harta` ON (`transaksi_zakat`.id_zakat = `zakat_harta`.id)");
+            result = stmt.executeQuery("SELECT `transaksi_zakat`.id_zakat,`nama_muzaki`,`no_telepon`,`alamat`,`email`, `harta_tab` FROM `muzaki` INNER JOIN `transaksi_zakat` ON (`muzaki`.id = `transaksi_zakat`.id_muzaki) INNER JOIN `zakat_harta` ON (`transaksi_zakat`.id_zakat = `zakat_harta`.id)");
             while (result.next()) {
-                Object o[] = {result.getString("nama_muzaki"), result.getString("no_telepon"), result.getString("alamat"),result.getString("email")};
+                Object o[] = {result.getString("id_zakat"), result.getString("nama_muzaki"), result.getString("no_telepon"), result.getString("alamat"),result.getString("email")};
                 tm.addRow(o);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "error gan");
+            JOptionPane.showMessageDialog(this, "Data Tidak Ada");
         }
     }
     /**
@@ -99,15 +99,23 @@ public class detildata extends javax.swing.JFrame {
 
         detilmuzaki.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "NAMA", "NO TELP", "ALAMAT", "EMAIL"
+                "id_zakat", "NAMA", "NO TELP", "ALAMAT", "EMAIL"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(detilmuzaki);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N

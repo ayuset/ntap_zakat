@@ -6,17 +6,55 @@
 
 package bayarzakat;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author USER
  */
 public class muzaki extends javax.swing.JFrame {
-
+    public static Connection conn = null;
+    public static Statement stmt = null;
+    public static final String USER = "root";
+    public static final String PASS = "";
+    private int hargaLogam = 0;
     /**
      * Creates new form muzaki
      */
-    public muzaki() {
+    public muzaki(int id) {
         initComponents();
+        tampil();
+        emas(); 
+        mBersih.setText(String.valueOf(id));
+    }
+    
+    private void tampil(){
+        try{
+            mLogam.setText(String.valueOf(this.hargaLogam));
+        } catch (Exception e){
+           System.out.println("Error"); 
+        }
+            
+    }
+    
+    private void emas() {
+        try {
+            String select = "SELECT * FROM master_perhitungan";
+            java.sql.Connection conn=(Connection)Config.configDB();
+            java.sql.Statement stm=conn.createStatement();
+            java.sql.ResultSet rs=stm.executeQuery(select);
+    //        ResultSet rs = stm.executeQuery(select);
+            while(rs.next()){
+                double harga = rs.getDouble("harga");
+//                System.out.println(harga);
+                mEmas.setText(String.valueOf(harga));
+            }
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
     }
 
     /**
@@ -356,6 +394,20 @@ public class muzaki extends javax.swing.JFrame {
 
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
         // TODO add your handling code here:
+        try{   
+            String sql = "INSERT INTO muzaki (nama_muzaki,no_telepon,alamat,email) "
+                    + "VALUES ('" + nama.getText() + "','"
+                    + telp.getText() + "','"
+                    + alamat.getText() + "','"
+                    + email.getText() + "')";
+            java.sql.Connection conn=(Connection)Config.configDB();
+            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(this, "Tambah Data Berhasil");
+         } catch (SQLException a){
+             JOptionPane.showMessageDialog(this, "Tambah Data Gagal");
+             a.printStackTrace();
+         }
     }//GEN-LAST:event_simpanActionPerformed
 
     /**
@@ -388,7 +440,7 @@ public class muzaki extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new muzaki().setVisible(true);
+                new muzaki(0).setVisible(true);
             }
         });
     }

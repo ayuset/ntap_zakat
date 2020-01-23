@@ -48,6 +48,9 @@ public class kalkulator extends javax.swing.JFrame {
             System.out.println("Error");
         }
     }
+//    public void run() {
+//        new muzaki(0).setVisible(true);
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -555,7 +558,13 @@ public class kalkulator extends javax.swing.JFrame {
                 java.sql.PreparedStatement pst=conn.prepareStatement(sql);
                 pst.execute();
                 JOptionPane.showMessageDialog(null, "Penyimpanan Data Berhasil");
-                new muzaki().setVisible(true);
+
+                int isi_jtxt = 1;
+                muzaki objk_form2 = new muzaki(isi_jtxt);
+                objk_form2.setVisible(true);
+
+                muzaki next = new muzaki(1);
+                next.setVisible(true);
                 dispose();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());
