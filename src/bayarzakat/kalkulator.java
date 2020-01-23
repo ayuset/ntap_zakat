@@ -24,6 +24,7 @@ public class kalkulator extends javax.swing.JFrame {
     double verifikasi;
     double zakatBulan;
     double zakatTahun;
+    int idZakat;
     /**
      * Creates new form kalkulator
      */
@@ -38,19 +39,29 @@ public class kalkulator extends javax.swing.JFrame {
             java.sql.Connection conn=(Connection)Config.configDB();
             java.sql.Statement stm=conn.createStatement();
             java.sql.ResultSet rs=stm.executeQuery(select);
-    //        ResultSet rs = stm.executeQuery(select);
             while(rs.next()){
                 double harga = rs.getDouble("harga");
-//                System.out.println(harga);
                 kEmas.setText(String.valueOf(harga));
             }
         } catch (Exception e) {
             System.out.println("Error");
         }
     }
-//    public void run() {
-//        new muzaki(0).setVisible(true);
-//    }
+    
+    private void getLastData () {
+        try {
+            String select = "SELECT * FROM `zakat_harta` ORDER BY `id` DESC limit 1";
+            java.sql.Connection conn=(Connection)Config.configDB();
+            java.sql.Statement stm=conn.createStatement();
+            java.sql.ResultSet rs=stm.executeQuery(select);
+            while(rs.next()){
+                idZakat = rs.getInt("id");
+            }
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -557,14 +568,11 @@ public class kalkulator extends javax.swing.JFrame {
                 java.sql.Connection conn=(Connection)Config.configDB();
                 java.sql.PreparedStatement pst=conn.prepareStatement(sql);
                 pst.execute();
-                JOptionPane.showMessageDialog(null, "Penyimpanan Data Berhasil");
-
-                int isi_jtxt = 1;
+//                JOptionPane.showMessageDialog(null, "Penyimpanan Data Berhasil");
+                getLastData();
+                int isi_jtxt = idZakat;
                 muzaki objk_form2 = new muzaki(isi_jtxt);
                 objk_form2.setVisible(true);
-
-                muzaki next = new muzaki(1);
-                next.setVisible(true);
                 dispose();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage());

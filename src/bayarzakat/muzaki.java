@@ -21,23 +21,60 @@ public class muzaki extends javax.swing.JFrame {
     public static final String USER = "root";
     public static final String PASS = "";
     private int hargaLogam = 0;
+    private int idZakatHarta;
+    private int idMuzaki;
+    private int idPerhitungan;
+
     /**
      * Creates new form muzaki
      */
     public muzaki(int id) {
         initComponents();
-        tampil();
         emas(); 
-        mBersih.setText(String.valueOf(id));
+        idZakatHarta = id;
+        tampil();
+//        mBersih.setText(String.valueOf(id));
     }
     
     private void tampil(){
         try{
-            mLogam.setText(String.valueOf(this.hargaLogam));
+            String select = "SELECT * FROM `zakat_harta` WHERE `id` = "+idZakatHarta;
+            java.sql.Connection conn=(Connection)Config.configDB();
+            java.sql.Statement stm=conn.createStatement();
+            java.sql.ResultSet rs=stm.executeQuery(select);
+            while(rs.next()){
+                double hartaTab = rs.getDouble("harta_tab");
+                double hartaLogam = rs.getDouble("harta_logam");
+                double hartaSurat = rs.getDouble("harta_surat");
+                double hartaProp = rs.getDouble("harta_properti");
+                double hartaKendaraan = rs.getDouble("harta_kendaraan");
+                double hartaKoleksi = rs.getDouble("harta_koleksi");
+                double hartaStock = rs.getDouble("harta_stock_dagang");
+                double hartaLain = rs.getDouble("harta_lainnya");
+                double hartaPiutang = rs.getDouble("harta_piutang_lancar");
+                double jmlHarta = rs.getDouble("jumlah_harta");
+                double hartaTempo = rs.getDouble("harta_jatuh_tempo");
+                double pengBersih = rs.getDouble("penghasilan_bersih");
+                double zPertahun = rs.getDouble("zakat_pertahun");
+                double zPerbulan = rs.getDouble("zakat_perbulan");
+                mTabungan.setText(String.valueOf(hartaTab));
+                mLogam.setText(String.valueOf(hartaLogam));
+                mSurat.setText(String.valueOf(hartaSurat));
+                mProperti.setText(String.valueOf(hartaProp));
+                mKendaraan.setText(String.valueOf(hartaKendaraan));
+                mKoleksi.setText(String.valueOf(hartaKoleksi));
+                mDagang.setText(String.valueOf(hartaStock));
+                mLain.setText(String.valueOf(hartaLain));
+                mPiutang.setText(String.valueOf(hartaPiutang));
+                mHarta.setText(String.valueOf(jmlHarta));
+                mTempo.setText(String.valueOf(hartaTempo));
+                mBersih.setText(String.valueOf(pengBersih));
+                mPertahun.setText(String.valueOf(zPertahun));
+                mPerbulan.setText(String.valueOf(zPerbulan));
+            }
         } catch (Exception e){
            System.out.println("Error"); 
-        }
-            
+        }      
     }
     
     private void emas() {
@@ -51,10 +88,65 @@ public class muzaki extends javax.swing.JFrame {
                 double harga = rs.getDouble("harga");
 //                System.out.println(harga);
                 mEmas.setText(String.valueOf(harga));
+                idPerhitungan = rs.getInt("id");
             }
         } catch (Exception e) {
             System.out.println("Error");
         }
+    }
+    
+    public void getLastData_muzaki () {
+        try {
+            String select = "SELECT * FROM `muzaki` ORDER BY `id` DESC limit 1";
+            java.sql.Connection conn=(Connection)Config.configDB();
+            java.sql.Statement stm=conn.createStatement();
+            java.sql.ResultSet rs=stm.executeQuery(select);
+            while(rs.next()){
+                idMuzaki = rs.getInt("id");
+//                return idMuzaki;
+            }
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+    }
+    
+    public void data_muzaki() {
+        try{   
+            String sql = "INSERT INTO muzaki (nama_muzaki,no_telepon,alamat,email) "
+                    + "VALUES ('" + nama.getText() + "','"
+                    + telp.getText() + "','"
+                    + alamat.getText() + "','"
+                    + email.getText() + "')";
+            java.sql.Connection conn=(Connection)Config.configDB();
+            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(this, "Tambah Data Berhasil");
+         } catch (SQLException a){
+             JOptionPane.showMessageDialog(this, "Tambah Data Gagal");
+             a.printStackTrace();
+         }
+    }
+    
+    public void data_transaksi() {
+        try{   
+            String sql = "INSERT INTO transaksi_zakat (id_zakat, id_master_perhitungan, harga_emas, penghasilan_bersih, jumlah_pertahun, jumlah_perbulan, id_muzaki) "
+                    + "VALUES ('" + idZakatHarta + "','"
+                    + idPerhitungan + "','"
+                    + mEmas.getText()+ "','"
+                    + mBersih.getText() + "','"
+                    + mPertahun.getText() + "','"
+                    + mPerbulan.getText() + "','"
+                    + idMuzaki + "')";
+            java.sql.Connection conn=(Connection)Config.configDB();
+            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(this, "Tambah Data Berhasil");
+            new formBayarZakat().setVisible(true);
+            dispose();
+         } catch (SQLException a){
+             JOptionPane.showMessageDialog(this, "Tambah Data Gagal");
+             a.printStackTrace();
+         }
     }
 
     /**
@@ -104,7 +196,9 @@ public class muzaki extends javax.swing.JFrame {
         mHarta = new javax.swing.JLabel();
         mTempo = new javax.swing.JLabel();
         jLabel92 = new javax.swing.JLabel();
-        mJumlah = new javax.swing.JLabel();
+        mPerbulan = new javax.swing.JLabel();
+        jLabel93 = new javax.swing.JLabel();
+        mPertahun = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -209,8 +303,14 @@ public class muzaki extends javax.swing.JFrame {
         jLabel92.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel92.setText("Jumlah Perbulan");
 
-        mJumlah.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        mJumlah.setText("0");
+        mPerbulan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        mPerbulan.setText("0");
+
+        jLabel93.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel93.setText("Jumlah Pertahun");
+
+        mPertahun.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        mPertahun.setText("0");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -222,7 +322,7 @@ public class muzaki extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel92)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(mJumlah))
+                        .addComponent(mPerbulan))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
@@ -237,7 +337,7 @@ public class muzaki extends javax.swing.JFrame {
                             .addComponent(jLabel78)
                             .addComponent(jLabel79)
                             .addComponent(jLabel69))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(mTabungan)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,7 +352,11 @@ public class muzaki extends javax.swing.JFrame {
                             .addComponent(mLain)
                             .addComponent(mPiutang)
                             .addComponent(mHarta)
-                            .addComponent(mTempo))))
+                            .addComponent(mTempo)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel93)
+                        .addGap(196, 196, 196)
+                        .addComponent(mPertahun)))
                 .addGap(50, 50, 50))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
@@ -316,13 +420,17 @@ public class muzaki extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel92)
-                    .addComponent(mJumlah))
+                    .addComponent(mPerbulan))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mPertahun)
+                    .addComponent(jLabel93))
                 .addContainerGap(27, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(37, 37, 37)
                     .addComponent(jLabel67)
-                    .addContainerGap(383, Short.MAX_VALUE)))
+                    .addContainerGap(421, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -356,7 +464,7 @@ public class muzaki extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(215, 215, 215)
                         .addComponent(simpan)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
@@ -386,28 +494,17 @@ public class muzaki extends javax.swing.JFrame {
                             .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(simpan)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
-        // TODO add your handling code here:
-        try{   
-            String sql = "INSERT INTO muzaki (nama_muzaki,no_telepon,alamat,email) "
-                    + "VALUES ('" + nama.getText() + "','"
-                    + telp.getText() + "','"
-                    + alamat.getText() + "','"
-                    + email.getText() + "')";
-            java.sql.Connection conn=(Connection)Config.configDB();
-            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
-            pst.execute();
-            JOptionPane.showMessageDialog(this, "Tambah Data Berhasil");
-         } catch (SQLException a){
-             JOptionPane.showMessageDialog(this, "Tambah Data Gagal");
-             a.printStackTrace();
-         }
+        // TODO add your handling code here:        
+        data_muzaki();
+        getLastData_muzaki();
+        data_transaksi();
     }//GEN-LAST:event_simpanActionPerformed
 
     /**
@@ -467,16 +564,18 @@ public class muzaki extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel78;
     private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel92;
+    private javax.swing.JLabel jLabel93;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel mBersih;
     private javax.swing.JLabel mDagang;
     private javax.swing.JLabel mEmas;
     private javax.swing.JLabel mHarta;
-    private javax.swing.JLabel mJumlah;
     private javax.swing.JLabel mKendaraan;
     private javax.swing.JLabel mKoleksi;
     private javax.swing.JLabel mLain;
     private javax.swing.JLabel mLogam;
+    private javax.swing.JLabel mPerbulan;
+    private javax.swing.JLabel mPertahun;
     private javax.swing.JLabel mPiutang;
     private javax.swing.JLabel mProperti;
     private javax.swing.JLabel mSurat;
