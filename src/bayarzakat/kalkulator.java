@@ -22,6 +22,8 @@ public class kalkulator extends javax.swing.JFrame {
     public static Connection con;
     public static Statement stm;
     double verifikasi;
+    double zakatBulan;
+    double zakatTahun;
     /**
      * Creates new form kalkulator
      */
@@ -513,8 +515,8 @@ public class kalkulator extends javax.swing.JFrame {
         kTempo.setText(String.valueOf(getTempo));
         
         double nMaal = 85 * Double.valueOf(kEmas.getText());//nisab = 85 gram * harga_emas
-        double zakatBulan = 0.025 * hBersih;
-        double zakatTahun = zakatBulan * 12;
+        zakatBulan = 0.025 * hBersih;
+        zakatTahun = zakatBulan * 12;
         if (hBersih > nMaal) {
             verifikasi = 1;
         } else {
@@ -534,7 +536,7 @@ public class kalkulator extends javax.swing.JFrame {
         // TODO add your handling code here:        
         if (verifikasi == 1) {
             try {
-                String sql = "INSERT INTO zakat_harta (harta_tab, harta_logam, harta_surat, harta_properti, harta_kendaraan, harta_koleksi, harta_stock_dagang, harta_lainnya, harta_piutang_lancar, jumlah_harta, harta_jatuh_tempo, penghasilan_bersih) VALUES ('"
+                String sql = "INSERT INTO zakat_harta (harta_tab, harta_logam, harta_surat, harta_properti, harta_kendaraan, harta_koleksi, harta_stock_dagang, harta_lainnya, harta_piutang_lancar, jumlah_harta, harta_jatuh_tempo, penghasilan_bersih, zakat_pertahun, zakat_perbulan) VALUES ('"
                         +tab.getText()+"','"
                         +logam.getText()+"','"
                         +surat.getText()+"','"
@@ -546,7 +548,9 @@ public class kalkulator extends javax.swing.JFrame {
                         +piutang.getText()+"','"
                         +hJumlahHarta+"','"
                         +tempo.getText()+"','"
-                        +hBersih+"')";
+                        +hBersih+"','"
+                        +zakatBulan+"','"
+                        +zakatTahun+"')";
                 java.sql.Connection conn=(Connection)Config.configDB();
                 java.sql.PreparedStatement pst=conn.prepareStatement(sql);
                 pst.execute();
