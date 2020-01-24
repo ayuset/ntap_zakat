@@ -12,13 +12,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import java.awt.Dimension;
+import java.awt.Toolkit;
 /**
  *
  * @author USER
  */
-
-
 
 public class detildata extends javax.swing.JFrame {
 
@@ -31,6 +30,11 @@ public class detildata extends javax.swing.JFrame {
      */
     public detildata() {
          initComponents();
+         Dimension layar = Toolkit.getDefaultToolkit().getScreenSize();
+        // membuat titik x dan y
+        int x = layar.width / 2  - this.getSize().width / 2;
+        int y = layar.height / 2 - this.getSize().height / 2;
+        this.setLocation(x, y);
          tampil();
     }
     
@@ -106,6 +110,7 @@ public class detildata extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         detilmuzaki.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -10,7 +10,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-
+import java.awt.Dimension;
+import java.awt.Toolkit;
 /**
  *
  * @author USER
@@ -30,6 +31,11 @@ public class muzaki extends javax.swing.JFrame {
      */
     public muzaki(int id) {
         initComponents();
+        Dimension layar = Toolkit.getDefaultToolkit().getScreenSize();
+        // membuat titik x dan y
+        int x = layar.width / 2  - this.getSize().width / 2;
+        int y = layar.height / 2 - this.getSize().height / 2;
+        this.setLocation(x, y);
         emas(); 
         idZakatHarta = id;
         tampil();
@@ -201,9 +207,10 @@ public class muzaki extends javax.swing.JFrame {
         mPertahun = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Data Muzaki");
+        jLabel1.setText("Isi Data Muzaki");
 
         jLabel2.setText("Nama");
 
