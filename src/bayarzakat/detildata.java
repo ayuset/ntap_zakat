@@ -485,7 +485,8 @@ public class detildata extends javax.swing.JFrame {
     private void detilmuzakiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detilmuzakiMouseClicked
         // TODO add your handling code here:
         int baris = detilmuzaki.rowAtPoint(evt.getPoint());
-        String sid =detilmuzaki.getValueAt(baris, 0).toString();
+//        int dId = detilmuzaki.getValueAt(baris, 0);
+        String sid = detilmuzaki.getValueAt(baris, 0).toString();
         idzakat.setText(sid);
         String snama =detilmuzaki.getValueAt(baris, 1).toString();
         nama.setText(snama);
@@ -495,9 +496,13 @@ public class detildata extends javax.swing.JFrame {
         alamat.setText(salamat);
         String semail = detilmuzaki.getValueAt(baris,4).toString();
         email.setText(semail);
-    
+        int dId = Integer.valueOf(sid);
+                
          try{
-            String select = "SELECT `harta_tab`,`harta_logam` FROM `transaksi_zakat` INNER JOIN `zakat_harta` ON (`transaksi_zakat`.id_zakat = `zakat_harta`.id) WHERE transaksi_zakat.id_zakat = '"+41+"'";
+            String select = "SELECT `harta_tab`, `harta_logam`, `harta_surat`, `harta_properti`, `harta_kendaraan`, `harta_koleksi`, `harta_stock_dagang`, `harta_lainnya`, `harta_piutang_lancar`, `jumlah_harta`, `harta_jatuh_tempo`, `zakat_harta`.`penghasilan_bersih`, `zakat_harta`.`zakat_pertahun`, `zakat_harta`.`zakat_perbulan`, `transaksi_zakat`.`harga_emas`\n" +
+            "FROM `zakat_harta` \n" +
+            "INNER JOIN `transaksi_zakat` ON (`transaksi_zakat`.`id_zakat` = `zakat_harta`.`id`)\n" +
+            "WHERE `zakat_harta`.`id` = "+dId+"";
             java.sql.Connection conn=(Connection)Config.configDB();
             java.sql.Statement stm=conn.createStatement();
             java.sql.ResultSet rs=stm.executeQuery(select);
@@ -516,6 +521,7 @@ public class detildata extends javax.swing.JFrame {
                 double pengBersih = rs.getDouble("penghasilan_bersih");
                 double zPertahun = rs.getDouble("zakat_pertahun");
                 double zPerbulan = rs.getDouble("zakat_perbulan");
+                double hargaEmas = rs.getDouble("harga_emas");
                 dTabungan.setText(String.valueOf(hartaTab));
                 dLogam.setText(String.valueOf(hartaLogam));
                 dSurat.setText(String.valueOf(hartaSurat));
@@ -528,10 +534,11 @@ public class detildata extends javax.swing.JFrame {
                 dHarta.setText(String.valueOf(jmlHarta));
                 dTempo.setText(String.valueOf(hartaTempo));
                 dBersih.setText(String.valueOf(pengBersih));
-                dJumlah.setText(String.valueOf(zPerbulan));dBersih.setText(rs.getString("penghasilan_bersih"));
+                dJumlah.setText(String.valueOf(zPerbulan));
+                dEmas.setText(String.valueOf(hargaEmas));
             }
         } catch (Exception e){
-           System.out.println("Error"); 
+           System.out.println("Data yang di select salah"); 
         }      
     }//GEN-LAST:event_detilmuzakiMouseClicked
 
