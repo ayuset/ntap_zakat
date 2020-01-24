@@ -207,19 +207,28 @@ public class muzaki extends javax.swing.JFrame {
         mPertahun = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 153, 51));
+        setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         setResizable(false);
+        setSize(new java.awt.Dimension(73, 29));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         jLabel1.setText("Isi Data Muzaki");
 
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         jLabel2.setText("Nama");
 
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         jLabel3.setText("Nomer Telepon");
 
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         jLabel4.setText("Alamat");
 
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         jLabel5.setText("Email");
 
+        simpan.setBackground(new java.awt.Color(0, 153, 102));
+        simpan.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         simpan.setText("SIMPAN");
         simpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,94 +238,94 @@ public class muzaki extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
-        mEmas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        mEmas.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         mEmas.setText("0");
 
-        jLabel67.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel67.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel67.setText("Harga Emas");
 
-        jLabel68.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel68.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel68.setText("Penghasilan Bersih");
 
-        mBersih.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        mBersih.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         mBersih.setText("0");
 
-        jLabel69.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel69.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel69.setText("Harta jatuh tempo");
 
-        jLabel71.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel71.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel71.setText("Harta surat");
 
-        jLabel72.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel72.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel72.setText("Harta Stock dagang");
 
-        jLabel73.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel73.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel73.setText("Harta Logam");
 
-        jLabel74.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel74.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel74.setText("Harta Lainnya");
 
-        jLabel75.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel75.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel75.setText("Harta properti");
 
-        jLabel76.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel76.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel76.setText("Harta Koleksi");
 
-        jLabel77.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel77.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel77.setText("Harta kendaraan");
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel13.setText("Harta Tabungan");
 
-        jLabel78.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel78.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel78.setText("Harta piutang lancar");
 
-        jLabel79.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel79.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel79.setText("Jumlah Harta");
 
-        mTabungan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mTabungan.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         mTabungan.setText("0");
 
-        mLogam.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mLogam.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         mLogam.setText("0");
 
-        mSurat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mSurat.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         mSurat.setText("0");
 
-        mProperti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mProperti.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         mProperti.setText("0");
 
-        mKendaraan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mKendaraan.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         mKendaraan.setText("0");
 
-        mKoleksi.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mKoleksi.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         mKoleksi.setText("0");
 
-        mDagang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mDagang.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         mDagang.setText("0");
 
-        mLain.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mLain.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         mLain.setText("0");
 
-        mPiutang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mPiutang.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         mPiutang.setText("0");
 
-        mHarta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mHarta.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         mHarta.setText("0");
 
-        mTempo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        mTempo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         mTempo.setText("0");
 
-        jLabel92.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel92.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel92.setText("Jumlah Perbulan");
 
-        mPerbulan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        mPerbulan.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         mPerbulan.setText("0");
 
-        jLabel93.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel93.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel93.setText("Jumlah Pertahun");
 
-        mPertahun.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        mPertahun.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         mPertahun.setText("0");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -445,43 +454,46 @@ public class muzaki extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(89, 89, 89)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(45, 45, 45)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(telp, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(110, 110, 110)
+                                    .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(telp, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(110, 110, 110)
-                                .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addComponent(simpan)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                        .addGap(67, 67, 67)
+                        .addComponent(simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -500,7 +512,7 @@ public class muzaki extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(simpan)))
+                        .addComponent(simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

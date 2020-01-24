@@ -112,6 +112,7 @@ public class detildata extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        detilmuzaki.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
         detilmuzaki.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -143,82 +144,82 @@ public class detildata extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        dEmas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        dEmas.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         dEmas.setText("0");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel15.setText("Harga Emas");
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel16.setText("Penghasilan Bersih");
 
-        dBersih.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        dBersih.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         dBersih.setText("0");
 
-        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel26.setText("Harta jatuh tempo");
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel18.setText("Harta surat");
 
-        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel22.setText("Harta Stock dagang");
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel17.setText("Harta Logam");
 
-        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel23.setText("Harta Lainnya");
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel19.setText("Harta properti");
 
-        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel21.setText("Harta Koleksi");
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel20.setText("Harta kendaraan");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel11.setText("Harta Tabungan");
 
-        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel24.setText("Harta piutang lancar");
 
-        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel25.setText("Jumlah Harta");
 
-        dTabungan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dTabungan.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         dTabungan.setText("0");
 
-        dLogam.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dLogam.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         dLogam.setText("0");
 
-        dSurat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dSurat.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         dSurat.setText("0");
 
-        dProperti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dProperti.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         dProperti.setText("0");
 
-        dKendaraan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dKendaraan.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         dKendaraan.setText("0");
 
-        dKoleksi.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dKoleksi.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         dKoleksi.setText("0");
 
-        dDagang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dDagang.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         dDagang.setText("0");
 
-        dLain.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dLain.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         dLain.setText("0");
 
-        dPiutang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dPiutang.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         dPiutang.setText("0");
 
-        dHarta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dHarta.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         dHarta.setText("0");
 
-        dTempo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        dTempo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         dTempo.setText("0");
 
         jLabel40.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -235,44 +236,39 @@ public class detildata extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel40)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(dJumlah))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jLabel18)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel19)
-                                    .addComponent(jLabel20)
-                                    .addComponent(jLabel21)
-                                    .addComponent(jLabel22)
-                                    .addComponent(jLabel23)
-                                    .addComponent(jLabel24)
-                                    .addComponent(jLabel25)
-                                    .addComponent(jLabel26))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(dTabungan)
-                                    .addComponent(dEmas)
-                                    .addComponent(dLogam)
-                                    .addComponent(dSurat)
-                                    .addComponent(dProperti)
-                                    .addComponent(dKendaraan)
-                                    .addComponent(dKoleksi)
-                                    .addComponent(dDagang)
-                                    .addComponent(dLain)
-                                    .addComponent(dPiutang)
-                                    .addComponent(dHarta)
-                                    .addComponent(dTempo))))
-                        .addGap(56, 56, 56))
+                        .addComponent(jLabel40)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                        .addComponent(dJumlah))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(325, 325, 325)
-                        .addComponent(dBersih)
-                        .addContainerGap())))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel25)
+                            .addComponent(jLabel26))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dTabungan, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dEmas, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dLogam, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dSurat, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dProperti, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dKendaraan, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dKoleksi, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dDagang, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dLain, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dPiutang, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dHarta, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dTempo, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dBersih, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGap(56, 56, 56))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(43, 43, 43)
@@ -336,7 +332,7 @@ public class detildata extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel40)
                     .addComponent(dJumlah))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(37, 37, 37)
@@ -344,13 +340,15 @@ public class detildata extends javax.swing.JFrame {
                     .addContainerGap(374, Short.MAX_VALUE)))
         );
 
-        kembali.setText("Kembali");
+        kembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bayarzakat/back.png"))); // NOI18N
         kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kembaliActionPerformed(evt);
             }
         });
 
+        edit.setBackground(new java.awt.Color(0, 153, 102));
+        edit.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         edit.setText("Edit");
         edit.setToolTipText("");
         edit.addActionListener(new java.awt.event.ActionListener() {
@@ -359,18 +357,23 @@ public class detildata extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         jLabel2.setText("Nama");
 
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         jLabel3.setText("Nomer Telepon");
 
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         jLabel4.setText("Alamat");
 
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         jLabel5.setText("Email");
 
         nama.setText("....");
 
         idzakat.setText("....");
 
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
         jLabel6.setText("ID ZAKAT");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -380,37 +383,31 @@ public class detildata extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(103, 103, 103)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(103, 103, 103)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(idzakat, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(telp, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(idzakat, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(telp, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(196, 196, 196)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(151, 151, 151))))
+                        .addContainerGap()
+                        .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
             .addGroup(layout.createSequentialGroup()
                 .addGap(320, 320, 320)
                 .addComponent(jLabel1)
@@ -420,13 +417,12 @@ public class detildata extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -453,7 +449,8 @@ public class detildata extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -490,13 +487,13 @@ public class detildata extends javax.swing.JFrame {
     private void detilmuzakiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detilmuzakiMouseClicked
         // TODO add your handling code here:
         int baris = detilmuzaki.rowAtPoint(evt.getPoint());
-//        int dId = detilmuzaki.getValueAt(baris, 0);
         String sid = detilmuzaki.getValueAt(baris, 0).toString();
         idzakat.setText(sid);
         String snama =detilmuzaki.getValueAt(baris, 1).toString();
         nama.setText(snama);
         String stelp = detilmuzaki.getValueAt(baris,2).toString();
-        telp.setText(stelp);
+        telp.setText(stelp);//        int dId = detilmuzaki.getValueAt(baris, 0);
+
         String salamat =detilmuzaki.getValueAt(baris, 3).toString();
         alamat.setText(salamat);
         String semail = detilmuzaki.getValueAt(baris,4).toString();
